@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace CoreFitness.Controllers
+namespace CoreFitness.Controllers;
+
+public class GymClassController : Controller
 {
-    public class GymClassController : Controller
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
     }
 }
