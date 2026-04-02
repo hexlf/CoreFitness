@@ -11,15 +11,13 @@
 </head>
 <body>
     <div>
-        <header>
-        </header>
+        @await Html.PartialAsync("Partials/_Header")
         <div class="container">
             <main role="main" class="pb-3">
                 @RenderBody()
             </main>
         </div>
-        <footer class="border-top footer text-muted">
-        </footer>
+        @await Html.PartialAsync("Partials/_Footer")
     </div>
 
 
