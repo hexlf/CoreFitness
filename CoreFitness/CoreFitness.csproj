@@ -7,8 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Home\Hero\" />
-    <Folder Include="Views\Shared\Header\" />
     <Folder Include="WiewModels\" />
   </ItemGroup>
 
