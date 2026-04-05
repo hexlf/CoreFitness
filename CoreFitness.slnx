@@ -3,4 +3,5 @@
   <Project Path="CoreFitness/CoreFitness.csproj" />
   <Project Path="Domain/Domain.csproj" Id="64e396a2-0a75-4c38-b9cd-3343e33f794f" />
   <Project Path="Infrastructure/Infrastructure.csproj" Id="ad7d565a-351c-4802-8559-6c48d9cf0539" />
+  <Project Path="Tests/Tests.csproj" Id="ae09f962-5338-41cd-9c13-6c5b1417e034" />
 </Solution>
