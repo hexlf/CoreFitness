@@ -1,6 +1,6 @@
 :root {
-    --color-black: #0000;
-    --color-white: #ffff;
+    --color-black: #000000;
+    --color-white: #ffffff;
     --color-text-gray: #27252F;
     --color-text-gray-light: #575757;
     --color-form-text-gray: #A7A7A7;
@@ -11,13 +11,14 @@
 *,
 ::after,
 ::before {
-    box-sizing:border-box;
-    background-color: darkgray;
-    margin:0;
-    padding:0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border:1px solid white; 
 }
 
 html{
+    background-color:black;
     margin:0;
 }
 
@@ -35,4 +36,49 @@ p,a{
     padding-right: 20px;
     padding-left: 20px;
     padding-bottom: 16px;
+}
+
+.header-holder {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 25px;
+    padding-right: 32px;
+    padding-left: 32px;
+    padding-bottom: 25px;
+    background-image: url('../images/NavbarBackground.png');
+    max-width: 1880px;
+    height: 100px;
+
+    a{
+        height: 22px;
+        text-decoration: none;
+        color: var(--color-white);
+    }
+
+    a:hover {
+        color: var(--color-background-Neongreen);
+    }
+
+}
+
+.navbar-midel-btn-holder {
+    display: flex;
+    max-width: 618px;
+    gap:32px;
+    align-items:center;
+}
+
+.navbar-side-btn-holder {
+    display: flex;
+    gap: 30px;
+    max-width: 295px;
+    align-items: center;
+}
+
+.navbar-SignIn-btn {
+    background-color: var(--color-background-Neongreen);
+    a.sign-in-link {
+        text-decoration: none;
+        color: var(--color-black);
+    }
 }

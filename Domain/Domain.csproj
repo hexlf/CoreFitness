@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Abstractions\Repositories\" />
+    <Folder Include="Aggragates\" />
+    <Folder Include="Shared\ValueObjects\" />
+  </ItemGroup>
+
 </Project>

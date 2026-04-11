@@ -1,13 +1,12 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace CoreFitness.Controllers
 {
-    public class HomeController : Controller
+    public class ErrorController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
-
     }
 }
