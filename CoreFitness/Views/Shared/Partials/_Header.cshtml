@@ -4,9 +4,17 @@
         <div class="navbar-midel-btn-holder">
             <a href="X">Fitness Centers</a>
             <a href="X">Memberships</a>
-            <div class="navbar-dropdown-btn">
-            <a>Training</a>
+            <div class="navbar-dropdown-btn" id="trainingDropdown">
+            <a class="navbar-dropdown-toggle" onclick="toggleDropdown()">Training <span class="dropdown-arrow">&#8964;</span></a>
+            <div class="navbar-dropdown-menu">
+                <ul>
+                    <li><a href="#">Personal Training</a></li>
+                    <li><a href="#">Group Training</a></li>
+                    <li><a href="#">Padel</a></li>
+                </ul>
             </div>
+    
+    </div>
             <a>Customer Service</a>
             <a>Store</a>
         </div>
@@ -14,6 +22,7 @@
             <a>Become Member</a>
             <div class="navbar-SignIn-btn">
                 <a class="sign-in-link">Sign In</a>
+                <span class="sign-in-arrow">&#62;</span>
             </div>
         </div>
     </div>
