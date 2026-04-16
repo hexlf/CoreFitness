@@ -167,7 +167,8 @@ p,a{
     background-repeat: no-repeat;
     height: 775px;
     padding-left: 320px;
-
+    border-radius:20px;
+    margin-bottom:16px;
     .hero-content {
         display: flex;
         flex-direction: column;
@@ -180,7 +181,7 @@ p,a{
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            border: 1px solid rgba(255,255,255,0.25);
+            background-color:var(--color-text-gray);
             border-radius: 999px;
             padding: 6px 14px;
             color: var(--color-white);
@@ -278,8 +279,17 @@ p,a{
     }
 }
 
+.logos{
+    height:120px;
+    width:1880px;
+    margin-bottom: 85px;
+}
+.about-us {
+    display: flex;
+    .about-us-conten{
 
-
+    }
+}
 
 
 
