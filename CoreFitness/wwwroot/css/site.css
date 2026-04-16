@@ -284,10 +284,33 @@ p,a{
     width:1880px;
     margin-bottom: 85px;
 }
+
 .about-us {
     display: flex;
-    .about-us-conten{
+    align-content: center;
+    justify-content: center;
 
+    .about-us-content {
+        display: flex;
+        flex-direction: row;
+        column-gap: 72px;
+        .about-us-dot{
+            margin-bottom:12px;
+        } 
+        
+        .about-us-title {
+            font-size: 48px;
+            max-width: 616px;
+            margin-bottom:20px;
+            color:var(--color-text-gray);
+        }
+
+        .about-us-subtitle{
+            font-size:16px;
+            max-width:616px;
+            margin-bottom:50px;
+            color: var(--color-text-gray-light);
+        }
     }
 }
 
