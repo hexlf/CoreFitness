@@ -386,3 +386,9 @@ p,a{
 }
 
 /* Footer */
+
+footer{
+    display:flex;
+    justify-content:center;
+    align-content:center;
+}
