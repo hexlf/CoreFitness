@@ -31,7 +31,7 @@ p,a{
 }
 
 .App-layout {
-    height: 100dvh;
+    height: fit-content;
     padding-top: 16px;
     padding-right: 20px;
     padding-left: 20px;
@@ -278,18 +278,20 @@ p,a{
         }
     }
 }
+/* Logos Section */
 
 .logos{
     height:120px;
     width:1880px;
     margin-bottom: 85px;
 }
+/* About us */
 
 .about-us {
     display: flex;
     align-content: center;
     justify-content: center;
-
+    margin-bottom:110px;
     .about-us-content {
         display: flex;
         flex-direction: row;
@@ -313,7 +315,39 @@ p,a{
         }
     }
 }
+/* Ourprograms */
+
+.our-programs {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    .our-program-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .our-program-title{
+            color:var(--color-text-gray);
+            max-width:720px;
+            text-align:center;
+            font-size:48px;
+            margin-top:33px;
+            margin-bottom:49px;
+        }
+
+        .our-program-smalltext{
+            margin-top:44px;
+            margin-bottom:66px;
+            a{
+                text-decoration:underline;
+                color:var(--color-black);
+            }
+        }
 
 
+    }
+}
 
 
