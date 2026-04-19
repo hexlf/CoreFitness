@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "CoreFitness",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--project", "CoreFitness/CoreFitness.csproj", "--launch-profile", "http"],
+      "port": 5263
+    }
+  ]
+}
