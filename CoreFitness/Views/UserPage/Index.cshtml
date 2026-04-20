@@ -1,0 +1,21 @@
+﻿@using System.Security.Claims
+@{
+    ViewData["Title"] = "My Account";
+    var firstName = User.FindFirstValue(ClaimTypes.GivenName) ?? "Member";
+    var lastName = User.FindFirstValue(ClaimTypes.Surname) ?? "";
+    var email = User.FindFirstValue(ClaimTypes.Email) ?? "";
+}
+
+<div class="user-page">
+    <div class="user-welcome">
+        <div class="user-avatar">@firstName[0]@lastName[0]</div>
+        <div class="user-info">
+            <h1 class="user-name">@firstName @lastName</h1>
+            <p class="user-email">@email</p>
+        </div>
+    </div>
+
+    <div class="user-actions">
+        <a asp-controller="SignInPage" asp-action="SignOut" class="signout-btn">Sign Out</a>
+    </div>
+</div>

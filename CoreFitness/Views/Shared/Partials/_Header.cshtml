@@ -1,28 +1,40 @@
 ﻿<header>
     <div class="header-holder">
-        <img src="~/images/logotype.png" alt="Logo" />
+        <a asp-controller="Home" asp-action="Index">
+            <img src="~/images/logotype.png" alt="Logo" />
+        </a>
         <div class="navbar-midel-btn-holder">
-            <a href="~/Home">Fitness Centers</a>
-            <a href="X">Memberships</a>
+            <a href="#">Fitness Centers</a>
+            <a asp-controller="Memberships" asp-action="Index">Memberships</a>
             <div class="navbar-dropdown-btn" id="trainingDropdown">
-            <a class="navbar-dropdown-toggle" onclick="toggleDropdown()"> Training <span class="dropdown-arrow">&#8964;</span></a>
-            <div class="navbar-dropdown-menu">
-                <ul>
-                    <li><a href="X">Personal Training</a></li>
-                    <li><a href="X">Group Training</a></li>
-                    <li><a href="X">Padel</a></li>
-                </ul>
+                <a class="navbar-dropdown-toggle" onclick="toggleDropdown()">Training <span class="dropdown-arrow">&#8964;</span></a>
+                <div class="navbar-dropdown-menu">
+                    <ul>
+                        <li><a href="#">Personal Training</a></li>
+                        <li><a href="#">Group Training</a></li>
+                        <li><a href="#">Padel</a></li>
+                    </ul>
+                </div>
             </div>
-            </div>
-            <a>Customer Service</a>
-            <a>Store</a>
+            <a href="#">Customer Service</a>
+            <a asp-controller="GymClass" asp-action="Index">Store</a>
         </div>
         <div class="navbar-side-btn-holder">
-            <a href="~/Memberships">Become Member</a>
-            <div class="navbar-SignIn-btn">
-                <a class="sign-in-link">Sign In</a>
-                <span class="sign-in-arrow">&#62;</span>
-            </div>
+            <a asp-controller="SignUp" asp-action="Index">Become Member</a>
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                <div class="navbar-SignIn-btn">
+                    <a asp-controller="UserPage" asp-action="Index" class="sign-in-link">My Account</a>
+                    <span class="sign-in-arrow">&#62;</span>
+                </div>
+            }
+            else
+            {
+                <div class="navbar-SignIn-btn">
+                    <a asp-controller="SignInPage" asp-action="Index" class="sign-in-link">Sign In</a>
+                    <span class="sign-in-arrow">&#62;</span>
+                </div>
+            }
         </div>
     </div>
 </header>

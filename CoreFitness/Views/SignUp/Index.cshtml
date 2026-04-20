@@ -1,0 +1,58 @@
+﻿@model CoreFitness.Models.RegisterViewModel
+@{
+    ViewData["Title"] = "Create Account";
+}
+
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1 class="auth-title">Create account</h1>
+            <p class="auth-subtitle">Start your CoreFitness journey today</p>
+        </div>
+
+        <form asp-controller="SignUp" asp-action="Register" method="post" class="auth-form">
+            <div asp-validation-summary="ModelOnly" class="auth-error"></div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label asp-for="FirstName" class="form-label">First Name</label>
+                    <input asp-for="FirstName" class="form-input" placeholder="John" autocomplete="given-name" />
+                    <span asp-validation-for="FirstName" class="field-error"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="form-label">Last Name</label>
+                    <input asp-for="LastName" class="form-input" placeholder="Doe" autocomplete="family-name" />
+                    <span asp-validation-for="LastName" class="field-error"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-input" type="email" placeholder="your@email.com" autocomplete="email" />
+                <span asp-validation-for="Email" class="field-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" class="form-input" type="password" placeholder="Min. 8 characters" autocomplete="new-password" />
+                <span asp-validation-for="Password" class="field-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
+                <input asp-for="ConfirmPassword" class="form-input" type="password" placeholder="Repeat your password" autocomplete="new-password" />
+                <span asp-validation-for="ConfirmPassword" class="field-error"></span>
+            </div>
+
+            <button type="submit" class="auth-btn">Create Account</button>
+        </form>
+
+        <p class="auth-switch">
+            Already have an account? <a asp-controller="SignInPage" asp-action="Index">Sign in</a>
+        </p>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
