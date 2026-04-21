@@ -1,6 +1,8 @@
 ﻿using Application.Services;
+using Application.UseCases.DeleteUser;
 using Application.UseCases.RegisterUser;
 using Application.UseCases.SignIn;
+using Application.UseCases.UpdateUserProfile;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,6 +16,8 @@ public static class ApplicationServiceCollectionRegistrationExtensions
         services.AddScoped<IPasswordService, PasswordService>();
         services.AddScoped<RegisterUserHandler>();
         services.AddScoped<SignInHandler>();
+        services.AddScoped<UpdateUserProfileHandler>();
+        services.AddScoped<DeleteUserHandler>();
 
         return services;
     }

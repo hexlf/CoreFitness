@@ -14,20 +14,12 @@ public class SignUpController : Controller
     public IActionResult Index() => View(new RegisterViewModel());
 
     [HttpPost]
-    public async Task<IActionResult> Register(RegisterViewModel model)
+    public IActionResult Continue(RegisterViewModel model)
     {
         if (!ModelState.IsValid)
             return View("Index", model);
 
-        var result = await _registerHandler.HandleAsync(
-            new RegisterUserCommand(model.Email, model.Password, model.FirstName, model.LastName));
-
-        if (!result.Success)
-        {
-            ModelState.AddModelError("", result.Error!);
-            return View("Index", model);
-        }
-
-        return RedirectToAction("Index", "SignInPage");
+        TempData["SignUpEmail"] = model.Email;
+        return RedirectToAction("Index", "SetPassword");
     }
 }

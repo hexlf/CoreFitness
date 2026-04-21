@@ -10,7 +10,7 @@ public static class ContextRegistrationExtension
     public static IServiceCollection AddDbContexts(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
     {
         services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
+        options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         
         return services;
     }
