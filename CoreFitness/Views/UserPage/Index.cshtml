@@ -1,21 +1,140 @@
-﻿@using System.Security.Claims
+﻿@model CoreFitness.Models.UpdateProfileViewModel
+@using System.Security.Claims
 @{
     ViewData["Title"] = "My Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     var firstName = User.FindFirstValue(ClaimTypes.GivenName) ?? "Member";
     var lastName = User.FindFirstValue(ClaimTypes.Surname) ?? "";
-    var email = User.FindFirstValue(ClaimTypes.Email) ?? "";
+    var profileImage = User.FindFirstValue("ProfileImagePath");
 }
 
-<div class="user-page">
-    <div class="user-welcome">
-        <div class="user-avatar">@firstName[0]@lastName[0]</div>
-        <div class="user-info">
-            <h1 class="user-name">@firstName @lastName</h1>
-            <p class="user-email">@email</p>
+<div class="account-page">
+    <h1 class="account-page-title">My Account</h1>
+
+    @if (TempData["SuccessMessage"] is string msg)
+    {
+        <div class="alert-success">@msg</div>
+    }
+
+    <div class="account-layout">
+        <div class="account-sidebar">
+            <div class="account-avatar">
+                @if (!string.IsNullOrEmpty(profileImage))
+                {
+                    <img src="@profileImage" alt="Profile" class="account-avatar-img" />
+                }
+                else
+                {
+                    <div class="account-avatar-initials">@(firstName.Length > 0 ? firstName[0].ToString() : "")@(lastName.Length > 0 ? lastName[0].ToString() : "")</div>
+                }
+            </div>
+
+            <div class="sidebar-menu">
+                <p class="sidebar-menu-label">Menu Options</p>
+                <ul class="sidebar-menu-list">
+                    <li class="sidebar-menu-item sidebar-menu-item--active">
+                        <span>About Me</span>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="#">My Membership <span class="sidebar-arrow">&#8250;</span></a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="#">My Bookings <span class="sidebar-arrow">&#8250;</span></a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a asp-controller="SignInPage" asp-action="SignOut">Sign Out <span class="sidebar-arrow">&#8250;</span></a>
+                    </li>
+                </ul>
+
+                <div class="sidebar-delete">
+                    <p class="sidebar-delete-text">If you wish to delete your account and all associated information</p>
+                    <form asp-controller="UserPage" asp-action="DeleteAccount" method="post"
+                          onsubmit="return confirm('Are you sure you want to permanently delete your account? This cannot be undone.')">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="delete-account-btn">Remove Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="account-main">
+            <div class="account-section">
+                <h2 class="account-section-title">About Me</h2>
+
+                <form asp-controller="UserPage" asp-action="UpdateProfile" method="post" enctype="multipart/form-data" class="profile-form">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="auth-error"></div>
+
+                    <input asp-for="ExistingProfileImagePath" type="hidden" />
+
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="form-label">First Name</label>
+                        <input asp-for="FirstName" class="form-input" placeholder="Enter First Name" />
+                        <span asp-validation-for="FirstName" class="field-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="LastName" class="form-label">Last Name</label>
+                        <input asp-for="LastName" class="form-input" placeholder="Enter Last Name" />
+                        <span asp-validation-for="LastName" class="field-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email" class="form-label">Email Address <span class="required">*</span></label>
+                        <input asp-for="Email" class="form-input" type="email" />
+                        <span asp-validation-for="Email" class="field-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+                        <input asp-for="PhoneNumber" class="form-input" placeholder="Enter Phone Number" type="tel" />
+                        <span asp-validation-for="PhoneNumber" class="field-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ProfileImage" class="form-label">Profile Image</label>
+                        <div class="file-input-wrapper">
+                            <input asp-for="ProfileImage" class="form-input file-input" type="file" accept="image/*" placeholder="Upload Profile Image" />
+                            <button type="button" class="browse-btn" onclick="document.getElementById('ProfileImage').click()">Browse</button>
+                        </div>
+                    </div>
+
+                    <div class="profile-form-actions">
+                        <button type="submit" class="auth-btn profile-save-btn">
+                            Save <span class="btn-arrow">&#8250;</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="account-section stats-section">
+                <h2 class="account-section-title">My Statistics</h2>
+                <div class="stat-item">
+                    <div class="stat-label-row">
+                        <span class="stat-label">Check-In (last 30 days)</span>
+                        <span class="stat-value">25</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-bar-fill" style="width: 83%"></div></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label-row">
+                        <span class="stat-label">Weight Goal</span>
+                        <span class="stat-value">50%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-bar-fill" style="width: 50%"></div></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label-row">
+                        <span class="stat-label">Current BMI</span>
+                        <span class="stat-value">27</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-bar-fill stat-bar-fill--bmi" style="width: 60%"></div></div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="user-actions">
-        <a asp-controller="SignInPage" asp-action="SignOut" class="signout-btn">Sign Out</a>
-    </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
