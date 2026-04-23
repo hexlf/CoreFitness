@@ -1,0 +1,140 @@
+﻿@{
+    ViewData["Title"] = "Customer Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="cs-page">
+    <h1 class="cs-title">Customer Service</h1>
+
+    @if (TempData["MessageSent"] is string sentMsg)
+    {
+        <div class="alert-success">@sentMsg</div>
+    }
+
+    <div class="cs-contact-section">
+        <div class="cs-contact-image">
+            <img src="~/images/about-us-human.png" alt="Customer Service" />
+            <div class="cs-contact-badges">
+                <a href="tel:+4644992100" class="cs-contact-badge">
+                    <span class="cs-badge-icon">&#128222;</span>
+                    <div>
+                        <small>Phone Number</small>
+                        <strong>+(46) 4 49 921 00</strong>
+                    </div>
+                </a>
+                <a href="mailto:info@corefitness.se" class="cs-contact-badge">
+                    <span class="cs-badge-icon">&#9993;</span>
+                    <div>
+                        <small>Email Address</small>
+                        <strong>info@corefitness.se</strong>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="cs-contact-form-wrapper">
+            <h2 class="cs-form-title">Contact Us Today</h2>
+            <p class="cs-form-desc">
+                Share us your fitness journey or inquiry. Our expert team can work with you to create a
+                customized program guide you with the right approach for your fitness goals.
+            </p>
+
+            <form asp-controller="CustomerService" asp-action="SendMessage" method="post" class="cs-form">
+                @Html.AntiForgeryToken()
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">First Name <span class="required">*</span></label>
+                        <input name="firstName" class="form-input" placeholder="Enter First Name" required />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Last Name <span class="required">*</span></label>
+                        <input name="lastName" class="form-input" placeholder="Enter Last Name" required />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Email Address <span class="required">*</span></label>
+                        <input name="email" type="email" class="form-input" placeholder="Enter Email Address" required />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input name="phoneNumber" type="tel" class="form-input" placeholder="Enter Phone Number" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Message <span class="required">*</span></label>
+                    <textarea name="message" class="form-input form-textarea" placeholder="Message..." rows="5" required></textarea>
+                </div>
+                <button type="submit" class="auth-btn cs-submit-btn">
+                    Submit Message <span class="btn-arrow">&#8250;</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="faq-section faq-section--cs">
+        <div class="faq-image">
+            <img src="~/images/about-us-human.png" alt="Gym training" />
+        </div>
+        <div class="faq-content">
+            <div class="faq-badge">Frequently Asked Questions</div>
+            <h2 class="faq-title">Common questions about gym and training</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Q1. Do I need prior gym experience to Join CoreFitness?
+                        <span class="faq-icon">&#43;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No! CoreFitness is designed for all fitness levels. Our trainers guide beginners and experienced members alike.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Q2. What facilities are included with the membership?
+                        <span class="faq-icon">&#43;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Members get access to all gym equipment, locker rooms, group classes, and our online tracking platform.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Q3. Can I try the gym before taking a membership?
+                        <span class="faq-icon">&#43;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! We offer a free 1-week trial for all new members. No credit card required.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Q4. Are there group workout programs available?
+                        <span class="faq-icon">&#43;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, we offer daily group workout sessions including HIIT, yoga, cycling, and strength training.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Q5. Is nutrition guidance included in the plans?
+                        <span class="faq-icon">&#43;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Premium members receive personalized nutrition guidance from our certified nutritionists.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            item.classList.toggle('faq-item--open');
+        }
+    </script>
+}

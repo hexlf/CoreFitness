@@ -1,7 +1,133 @@
 ﻿@{
-    ViewData["Title"] = "Memberships";
+    ViewData["Title"] = "Our Membership Offers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="">
+<div class="memberships-page">
+<h1 class="memberships-title">Our Membership Offers</h1>
+    <div class="membership-cards">
+        <div class="membership-card">
+            <div class="membership-icon">&#9995;</div>
+            <h3 class="membership-name">Standard Membership</h3>
+            <p class="membership-desc">
+                With our Standard Membership, get access to all our gym locations with unlimited entry and
+                access to standard group fitness classes.
+            </p>
+            <ul class="membership-features">
+                <li><span class="feature-check">&#10003;</span> Unlimited access</li>
+                <li><span class="feature-check">&#10003;</span> High-energy group fitness classes</li>
+                <li><span class="feature-check">&#10003;</span> Swimming &amp; Premium Locker</li>
+            </ul>
+            <div class="membership-price">
+                <span class="price-amount">495.00</span>
+                <span class="price-currency">SEK</span>
+                <span class="price-period">/ Month, 24 Months</span>
+            </div>
+            <a asp-controller="SignUp" asp-action="Index" class="membership-btn">Join Now</a>
+            <p class="membership-trial">Try Any Membership For 1 Week!</p>
+        </div>
 
-</section>
+        <div class="membership-card membership-card--premium">
+            <div class="membership-icon">&#9995;</div>
+            <h3 class="membership-name">Premium Membership</h3>
+            <p class="membership-desc">
+                With our Premium Membership, get access to all our gym locations with Unlimited Entry &amp;
+                Premium Locker and 30 Classes.
+            </p>
+            <ul class="membership-features">
+                <li><span class="feature-check">&#10003;</span> Fully equipped Locker &amp; Premium Locker</li>
+                <li><span class="feature-check">&#10003;</span> High-energy group fitness classes</li>
+                <li><span class="feature-check">&#10003;</span> Motivating &amp; Unlimited classes</li>
+            </ul>
+            <div class="membership-price">
+                <span class="price-amount">995.00</span>
+                <span class="price-currency">SEK</span>
+                <span class="price-period">/ Month, 24 Months</span>
+            </div>
+            <a asp-controller="SignUp" asp-action="Index" class="membership-btn membership-btn--premium">Join Now</a>
+            <p class="membership-trial">Try Any Membership For 1 Week!</p>
+        </div>
+
+        <div class="membership-card membership-card--cta">
+            <h3 class="membership-cta-title">Get Your Membership</h3>
+            <p class="membership-cta-desc">Our memberships gives you access to all equipment, personalized training and classes.</p>
+            <p class="membership-phone">Call Us At: +(46) 4 49 921 00</p>
+            <a href="tel:+4644992100" class="membership-btn membership-btn--call">Call Us Now</a>
+        </div>
+    </div>
+
+    <div class="membership-badges">
+        <span class="badge"><span class="badge-icon">&#10003;</span> Get 30 days free trial</span>
+        <span class="badge"><span class="badge-icon">&#10003;</span> No hidden fees</span>
+        <span class="badge"><span class="badge-icon">&#10003;</span> You can cancel anytime</span>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-image">
+            <img src="~/images/about-us-human.png" alt="Gym training" />
+        </div>
+        <div class="faq-content">
+            <div class="faq-badge">Frequently Asked Questions</div>
+            <h2 class="faq-title">Common questions about gym and training</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Q1. Do I need prior gym experience to Join CoreFitness?
+                        <span class="faq-icon">&#43;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            No! CoreFitness is designed for all fitness levels. Our trainers guide beginners and
+                            experienced members alike. You'll receive a full orientation on equipment and training zones.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Q2. What facilities are included with the membership?
+                        <span class="faq-icon">&#43;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Members get access to all gym equipment, locker rooms, group classes, and our online tracking platform.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Q3. Can I try the gym before taking a membership?
+                        <span class="faq-icon">&#43;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! We offer a free 1-week trial for all new members. No credit card required.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Q4. Are there group workout programs available?
+                        <span class="faq-icon">&#43;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, we offer daily group workout sessions including HIIT, yoga, cycling, and strength training.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Q5. Is nutrition guidance included in the plans?
+                        <span class="faq-icon">&#43;</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Premium members receive personalized nutrition guidance from our certified nutritionists.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            item.classList.toggle('faq-item--open');
+        }
+    </script>
+}

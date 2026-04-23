@@ -16,20 +16,21 @@
                     </ul>
                 </div>
             </div>
-            <a href="#">Customer Service</a>
+            <a asp-controller="CustomerService" asp-action="Index">Customer Service</a>
             <a asp-controller="GymClass" asp-action="Index">Store</a>
         </div>
         <div class="navbar-side-btn-holder">
-            <a asp-controller="SignUp" asp-action="Index">Become Member</a>
             @if (User.Identity?.IsAuthenticated == true)
             {
-                <div class="navbar-SignIn-btn">
+                <a href="#">Our Classes</a>
+                <div class="navbar-SignIn-btn navbar-SignIn-btn--active">
                     <a asp-controller="UserPage" asp-action="Index" class="sign-in-link">My Account</a>
                     <span class="sign-in-arrow">&#62;</span>
                 </div>
             }
             else
             {
+                <a asp-controller="SignUp" asp-action="Index">Become Member</a>
                 <div class="navbar-SignIn-btn">
                     <a asp-controller="SignInPage" asp-action="Index" class="sign-in-link">Sign In</a>
                     <span class="sign-in-arrow">&#62;</span>
